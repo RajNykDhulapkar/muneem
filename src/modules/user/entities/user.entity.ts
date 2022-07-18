@@ -4,8 +4,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
     name: "user",
 })
 export class User {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @Column({
         type: "varchar",
@@ -25,9 +25,6 @@ export class User {
         unique: true,
     })
     email: string;
-
-    @Column({
-        type: "varchar",
-    })
-    emailVerificationCode: string;
 }
+
+export default User;

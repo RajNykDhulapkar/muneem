@@ -34,23 +34,31 @@
     "colId": "f1e85c92-df41-4c5b-8c35-2d96a76d669a",
     "containerId": "3385666d-62ce-4f91-bc97-40e0f0ffac04",
     "name": "Me",
-    "url": "{{host}}/api/users/me",
+    "url": "{{host}}/authentication",
     "method": "GET",
     "sortNum": 50000,
     "created": "2022-02-04T18:21:53.103Z",
-    "modified": "2022-02-08T18:36:58.495Z",
+    "modified": "2022-07-15T18:13:32.194Z",
     "headers": [],
     "params": [],
-    "auth": {
-      "type": "bearer",
-      "bearer": "{{accessToken}}"
-    },
     "tests": [
       {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
         "type": "set-env-var",
-        "custom": "json._id",
-        "action": "setto",
-        "value": "{{userId}}"
+        "custom": "json.name",
+        "action": "equal",
+        "value": "{{name}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.email",
+        "action": "equal",
+        "value": "{{email}}"
       }
     ]
   },
@@ -167,11 +175,11 @@
     "colId": "f1e85c92-df41-4c5b-8c35-2d96a76d669a",
     "containerId": "3385666d-62ce-4f91-bc97-40e0f0ffac04",
     "name": "Register user",
-    "url": "{{host}}/api/users",
+    "url": "{{host}}/authentication/register",
     "method": "POST",
     "sortNum": 10000,
     "created": "2022-02-04T18:21:53.103Z",
-    "modified": "2022-05-29T11:08:28.056Z",
+    "modified": "2022-07-15T14:44:57.298Z",
     "headers": [
       {
         "name": "Content-Type",
@@ -191,11 +199,11 @@
     "colId": "f1e85c92-df41-4c5b-8c35-2d96a76d669a",
     "containerId": "2a6f690a-69f1-4ed2-9737-6b6768371c76",
     "name": "Login",
-    "url": "{{host}}/api/sessions",
+    "url": "{{host}}/authentication/login",
     "method": "POST",
     "sortNum": 60000,
     "created": "2022-02-04T18:21:53.103Z",
-    "modified": "2022-02-08T05:57:21.077Z",
+    "modified": "2022-07-15T15:21:11.008Z",
     "headers": [],
     "params": [],
     "body": {
@@ -205,16 +213,16 @@
     },
     "tests": [
       {
-        "type": "set-env-var",
-        "custom": "json.accessToken",
-        "action": "setto",
-        "value": "{{accessToken}}"
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
       },
       {
         "type": "set-env-var",
-        "custom": "json.refreshToken",
+        "custom": "cookie.authentication",
         "action": "setto",
-        "value": "{{refreshToken}}"
+        "value": "{{accessToken}}"
       }
     ]
   },
@@ -223,21 +231,15 @@
     "colId": "f1e85c92-df41-4c5b-8c35-2d96a76d669a",
     "containerId": "2a6f690a-69f1-4ed2-9737-6b6768371c76",
     "name": "logout",
-    "url": "{{host}}/api/sessions/logout",
+    "url": "{{host}}/authentication/logout",
     "method": "POST",
     "sortNum": 100000,
     "created": "2022-02-04T18:21:53.103Z",
-    "modified": "2022-02-04T18:21:53.103Z",
+    "modified": "2022-07-15T18:15:23.015Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n    \"refreshToken\": \"{{refreshToken}}\"\n}",
-      "form": []
-    },
     "auth": {
-      "type": "bearer",
-      "bearer": "{{accessToken}}"
+      "type": "bearer"
     },
     "tests": []
   },

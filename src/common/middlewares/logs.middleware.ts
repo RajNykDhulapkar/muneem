@@ -1,5 +1,6 @@
 import { Injectable, Logger, NestMiddleware } from "@nestjs/common";
-import { Request, Response, NextFunction, response } from "express";
+import { Request, Response, NextFunction } from "express";
+import User from "../../modules/user/entities/user.entity";
 
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
@@ -8,7 +9,9 @@ export class LoggerMiddleware implements NestMiddleware {
         res.on("finish", () => {
             const { method, originalUrl } = req;
             const { statusCode, statusMessage } = res;
-            const message = `${method} ${originalUrl} ${statusCode} ${statusMessage}`;
+            const message = `${method} ${originalUrl} ${statusCode} ${statusMessage} ${
+                req.user ? "<user: " + (req.user as User).email + ">" : ""
+            }`;
 
             if (statusCode >= 500) {
                 return this.logger.error(message);

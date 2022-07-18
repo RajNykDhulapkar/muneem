@@ -1,14 +1,15 @@
 import { MiddlewareConsumer, Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
-import { TypeOrmModule } from "@nestjs/typeorm";
 import { AppController } from "./app.controller";
 
 import { AppService } from "./app.service";
 import configuration from "./config/configuration";
-import { typeOrmAsyncConfig } from "./config/typeorm.config";
 import { UserModule } from "./modules/user/user.module";
-import { SessionModule } from "./modules/session/session.module";
 import { LoggerMiddleware } from "./common/middlewares/logs.middleware";
+import { LoggerModule } from "./common/log/logger.module";
+import { DatabaseModule } from "./database/database.module";
+import validationSchema from "./config/validationSchema";
+import { AuthenticationModule } from "./authentication/authentication.module";
 
 console.log(`.env.${process.env.NODE_ENV}`);
 
@@ -16,11 +17,14 @@ console.log(`.env.${process.env.NODE_ENV}`);
     imports: [
         ConfigModule.forRoot({
             envFilePath: [`.env.${process.env.NODE_ENV}`],
+            validationSchema,
             load: [configuration],
+            isGlobal: true,
         }),
-        TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
+        DatabaseModule,
         UserModule,
-        SessionModule,
+        LoggerModule,
+        AuthenticationModule,
     ],
     controllers: [AppController],
     providers: [AppService],

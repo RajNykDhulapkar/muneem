@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from "@nestjs/typeorm";
 
 import * as dotenv from "dotenv";
+import DatabaseLogger from "../common/utils/databaseLogger";
 dotenv.config({ path: ".env.development" });
 
 export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
@@ -17,14 +18,15 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
             password: configService.get("DATABASE_PASSWORD"),
             database: configService.get("DATABASE_NAME"),
 
-            entities: ["dist/src/modules/**/**/*.entity.js"],
+            entities: ["dist/**/**/*.entity.js"],
 
             synchronize: false,
+            logger: new DatabaseLogger(),
             logging: true,
 
             migrationsTableName: "migration",
 
-            migrations: ["dist/src/database/migrations/*.js"],
+            migrations: ["dist/**/**/migrations/*.js"],
 
             cli: {
                 migrationsDir: "src/database/migrations",
@@ -48,6 +50,7 @@ export default {
     entities: ["dist/**/**/*.entity.js"],
 
     synchronize: false,
+    logger: new DatabaseLogger(),
     logging: true,
 
     migrationsTableName: "migration",

@@ -1,3 +1,4 @@
 export default () => ({
-    port: process.env.PORT || 3000,
+    healthCheckMessage: "OK",
+    internalServerErrorMessage: "Something went wrong",
 });
