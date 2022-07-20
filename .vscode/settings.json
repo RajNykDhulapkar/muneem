@@ -1,3 +1,11 @@
 {
-    "cSpell.words": ["middlewares", "muneem", "nestjs", "typeorm"]
+    "cSpell.words": [
+        "CAMELCASE",
+        "middlewares",
+        "muneem",
+        "nestjs",
+        "SNAKECASE",
+        "TITLECASE",
+        "typeorm"
+    ]
 }

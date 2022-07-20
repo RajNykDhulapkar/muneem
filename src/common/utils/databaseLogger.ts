@@ -15,7 +15,9 @@ class DatabaseLogger implements TypeOrmLogger {
             return;
         }
         this.logger.error(
-            `${query} -- Parameters: ${this.stringifyParameters(parameters)} -- ${error}`,
+            `here ${query} -- Parameters: ${this.stringifyParameters(parameters)} -- ${error}`,
+            undefined,
+            "SQL",
         );
     }
     logQuerySlow(time: number, query: string, parameters?: unknown[], queryRunner?: QueryRunner) {

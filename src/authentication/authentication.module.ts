@@ -7,11 +7,12 @@ import { UserModule } from "src/modules/user/user.module";
 import { AuthenticationController } from "./authentication.controller";
 import { AuthenticationService } from "./authentication.service";
 import { JwtStrategy } from "./strategies/jwt.strategy";
+import { JwtRefreshTokenStrategy } from "./strategies/jwtRefreshToken.strategy";
 import { LocalStrategy } from "./strategies/local.strategy";
 
 @Module({
     imports: [UserModule, PassportModule, ConfigModule, JwtModule.registerAsync(JwtAsyncConfig)],
-    providers: [AuthenticationService, LocalStrategy, JwtStrategy],
+    providers: [AuthenticationService, LocalStrategy, JwtStrategy, JwtRefreshTokenStrategy],
     controllers: [AuthenticationController], // TODO add authentication controller,
 })
 export class AuthenticationModule {}

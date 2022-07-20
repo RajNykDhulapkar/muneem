@@ -1,9 +1,10 @@
 import { ConfigService } from "@nestjs/config";
-import { NestFactory } from "@nestjs/core";
+import { NestFactory, Reflector } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import CustomLogger from "./common/log/customLogger";
 import getLogLevels from "./common/utils/getLogLevels";
 import * as cookieParser from "cookie-parser";
+import { ClassSerializerInterceptor, ValidationPipe } from "@nestjs/common";
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule, {
@@ -14,6 +15,8 @@ async function bootstrap() {
         origin: ["*"],
         allowedHeaders: ["*"],
     });
+    app.useGlobalPipes(new ValidationPipe());
+    // app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
     app.use(cookieParser());
     app.useLogger(app.get(CustomLogger));
     const configService: ConfigService = app.get(ConfigService);

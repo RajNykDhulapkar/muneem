@@ -26,13 +26,7 @@ describe("UserController", () => {
     });
 
     describe("createUser", () => {
-        it("should create a user", () => {
-            const name = `${faker.name.firstName()} ${faker.name.lastName()}`;
-            expect(controller.createUser({ name })).toEqual({
-                id: expect.any(String),
-                name,
-            });
-        });
+        it.todo("should create a user");
     });
 
     describe("findAllUser", () => {

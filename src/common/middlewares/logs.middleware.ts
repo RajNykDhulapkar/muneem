@@ -14,7 +14,7 @@ export class LoggerMiddleware implements NestMiddleware {
             }`;
 
             if (statusCode >= 500) {
-                return this.logger.error(message);
+                return this.logger.error(message, undefined, "HTTP");
             }
 
             if (statusCode >= 400) {

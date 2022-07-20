@@ -67,11 +67,11 @@
     "colId": "f1e85c92-df41-4c5b-8c35-2d96a76d669a",
     "containerId": "2a6f690a-69f1-4ed2-9737-6b6768371c76",
     "name": "Refresh access token",
-    "url": "{{host}}/api/sessions/refresh",
-    "method": "POST",
+    "url": "{{host}}/authentication/refresh",
+    "method": "GET",
     "sortNum": 70000,
     "created": "2022-02-04T18:21:53.103Z",
-    "modified": "2022-02-04T18:21:53.103Z",
+    "modified": "2022-07-20T11:53:43.549Z",
     "headers": [
       {
         "name": "x-refresh",
@@ -179,7 +179,7 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2022-02-04T18:21:53.103Z",
-    "modified": "2022-07-15T14:44:57.298Z",
+    "modified": "2022-07-20T14:12:32.401Z",
     "headers": [
       {
         "name": "Content-Type",
@@ -189,7 +189,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\": \"{{name}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\",\n    \"passwordConfirmation\": \"{{password}}\"\n}",
+      "raw": "{\n    \"name\": \"{{name}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\",\n    \"confirmPassword\": \"{{password}}\"\n}",
       "form": []
     },
     "tests": []

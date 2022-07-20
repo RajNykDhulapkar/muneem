@@ -1,7 +1,7 @@
-interface CreateUserDto {
+interface CreateUserInput {
     email: string;
     name: string;
     password: string;
 }
 
-export default CreateUserDto;
+export default CreateUserInput;

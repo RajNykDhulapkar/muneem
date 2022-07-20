@@ -1,4 +1,12 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Exclude } from "class-transformer";
+
+export enum UserRole {
+    USER = "USER",
+    SUPERUSER = "SUPERUSER",
+    DELETED = "DELETED",
+    GHOST = "GHOST", // TODO this property will be enabled when the user is created and will be changed to USER once the email of the user has been verified
+}
 
 @Entity({
     name: "user",
@@ -17,6 +25,7 @@ export class User {
         type: "varchar",
         nullable: false,
     })
+    @Exclude()
     password: string;
 
     @Column({
@@ -25,6 +34,19 @@ export class User {
         unique: true,
     })
     email: string;
+
+    @Column({
+        nullable: true,
+    })
+    @Exclude()
+    public currentHashedRefreshToken?: string;
+
+    @Column({
+        type: "enum",
+        enum: UserRole,
+        default: UserRole.USER,
+    })
+    role: UserRole;
 }
 
 export default User;

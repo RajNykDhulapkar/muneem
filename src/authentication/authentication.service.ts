@@ -23,7 +23,6 @@ export class AuthenticationService {
                 ...registerInput,
                 password: hashedPassword,
             });
-            createdUser.password = undefined;
             return createdUser;
         } catch (error: any) {
             if (error?.code === PostgresErrorCode.UniqueViolation) {
@@ -46,7 +45,6 @@ export class AuthenticationService {
             if (!isPasswordMatching) {
                 throw new HttpException("Wrong credentials provided", HttpStatus.UNAUTHORIZED);
             }
-            user.password = undefined;
             return user;
         } catch (error: any) {
             // TODO test this feature
@@ -57,15 +55,36 @@ export class AuthenticationService {
         }
     }
 
-    public getCookieWithJwtToken(userId: number) {
+    public getCookieWithJwtAccessToken(userId: number) {
         const payload: TokenPayload = { userId };
-        const token = this.jwtService.sign(payload);
-        return `auth=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
-            "JWT_EXPIRATION_TIME",
+        const token = this.jwtService.sign(payload, {
+            secret: this.configService.get("JWT_ACCESS_TOKEN_SECRET"),
+            expiresIn: `${this.configService.get("JWT_ACCESS_TOKEN_EXPIRATION_TIME")}s`,
+        });
+        return `Authentication=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
+            "JWT_ACCESS_TOKEN_EXPIRATION_TIME",
         )}`;
+    }
+    public getCookieWithJwtRefreshToken(userId: number) {
+        const payload: TokenPayload = { userId };
+        const token = this.jwtService.sign(payload, {
+            secret: this.configService.get("JWT_REFRESH_TOKEN_SECRET"),
+            expiresIn: `${this.configService.get("JWT_REFRESH_TOKEN_EXPIRATION_TIME")}s`,
+        });
+        // TODO change Path parameter to confirm sending of refresh token only when it is needed
+        const cookie = `Refresh=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
+            "JWT_REFRESH_TOKEN_EXPIRATION_TIME",
+        )}`;
+        return {
+            cookie,
+            token,
+        };
     }
 
     public getCookieForLogOut() {
-        return "auth=; HttpOnly; Path=/; Max-Age=0";
+        return [
+            "Authentication=; HttpOnly; Path=/; Max-Age=0",
+            "Refresh=; HttpOnly; Path=/; Max-Age=0",
+        ];
     }
 }

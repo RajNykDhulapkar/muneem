@@ -1,8 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import CreateUserDto from "./dto/createUser.dto";
 import { Repository } from "typeorm";
 import { User } from "./entities/user.entity";
+import * as bcrypt from "bcrypt";
+import CreateUserInput from "./interfaces/createUser.interface";
 
 @Injectable()
 export class UserService {
@@ -24,8 +25,34 @@ export class UserService {
         throw new HttpException("User with this email does not exist", HttpStatus.NOT_FOUND);
     }
 
-    create(createUserInput: CreateUserDto): Promise<User> {
+    async getUserIfRefreshTokenMatches(refreshToken: string, userId: number): Promise<User | null> {
+        const user = await this.getById(userId);
+        if (user.currentHashedRefreshToken) {
+            const isRefreshTokenMatching = await bcrypt.compare(
+                refreshToken,
+                user.currentHashedRefreshToken,
+            );
+            if (isRefreshTokenMatching) {
+                return user;
+            }
+        }
+    }
+
+    create(createUserInput: CreateUserInput): Promise<User> {
         const newUser = this.userRepository.create(createUserInput);
         return this.userRepository.save(newUser);
+    }
+
+    async setCurrentRefreshToken(refreshToken: string, userId: number) {
+        const currentHashedRefreshToken = await bcrypt.hash(refreshToken, 10);
+        await this.userRepository.update(userId, {
+            currentHashedRefreshToken,
+        });
+    }
+
+    async removeRefreshToken(userId: number) {
+        return this.userRepository.update(userId, {
+            currentHashedRefreshToken: null,
+        });
     }
 }
