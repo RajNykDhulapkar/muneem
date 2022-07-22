@@ -20,7 +20,7 @@ const Home: NextPage = () => {
                         <p className="text-xl pt-3">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, non?
                             Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Esse, explicabo? Lorem.
+                            adipisicing elit. Esse, explicabo? Lorem. inpiums
                         </p>
                         <div className="flex flex-row md:justify-start sm:justify-center">
                             <Link href="/auth/register">
