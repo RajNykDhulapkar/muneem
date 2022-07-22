@@ -17,8 +17,12 @@ function RegisterPage() {
     });
 
     async function onSubmit(values: CreateUserInput) {
+        console.log("submit");
         try {
-            await axios.post(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/api/users`, values);
+            const res = await axios.post(
+                `${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/authentication/register`,
+                values,
+            );
         } catch (error: any) {
             setRegisterError(error.message);
         }
@@ -94,10 +98,10 @@ function RegisterPage() {
 
                 <div className="form-element">
                     <InputArea
-                        name="passwordConfirmation"
+                        name="confirmPassword"
                         type="password"
                         label="Confirm Password"
-                        register={register("passwordConfirmation")}
+                        register={register("confirmPassword")}
                         icon={
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

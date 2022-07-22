@@ -1,13 +1,13 @@
 import { NextPage } from "next";
 import React, { useState } from "react";
-import { FieldErrors, UseFormRegisterReturn } from "react-hook-form";
+import { FieldErrorsImpl, UseFormRegisterReturn } from "react-hook-form";
 import makeId from "../../utils/makeId";
 
 type InputAreaProps = {
     type: string;
     label: string;
     name: string;
-    required: boolean;
+    required?: boolean;
 
     autoComplete?: boolean;
 
@@ -15,12 +15,12 @@ type InputAreaProps = {
     labeCustomClasses?: string;
     formGroupCustomClasses?: string;
 
-    icon?: React.SVGProps<SVGSVGElement>;
+    icon?: React.ReactNode;
 
     register: UseFormRegisterReturn;
-    errors: FieldErrors<{
+    errors: FieldErrorsImpl<{
         [x: string]: any;
-    }>;
+    }>; // FieldErrorsImpl<DeepRequired<{ [x: string]: any; }>>
 };
 
 const InputArea: NextPage<InputAreaProps> = ({
@@ -53,7 +53,7 @@ const InputArea: NextPage<InputAreaProps> = ({
             <input
                 autoComplete={autoComplete ? "on" : "off"}
                 type={inputType}
-                name={name}
+                // name={name}
                 id={id}
                 className={
                     icon
@@ -71,7 +71,7 @@ const InputArea: NextPage<InputAreaProps> = ({
                 ` + customClasses
                 }
                 placeholder=" "
-                required={required}
+                required={!required ? true : required}
                 {...register}
             />
             <label
