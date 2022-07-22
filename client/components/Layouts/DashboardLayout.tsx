@@ -8,11 +8,16 @@ import Sidebar from "../Sidebar";
 type DashboardLayoutProps = {
     pageTitle: string;
     children: React.ReactNode;
+    currentNavlinkIndex: number;
+    setCurrentNavlinkIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const DashboardLayout: NextPage<DashboardLayoutProps> = ({ pageTitle, children }) => {
-    const [currentNavlinkIndex, setCurrentNavlinkIndex] = useState<number>(1);
-
+const DashboardLayout: NextPage<DashboardLayoutProps> = ({
+    pageTitle,
+    children,
+    currentNavlinkIndex,
+    setCurrentNavlinkIndex,
+}) => {
     return (
         <div>
             <Head>

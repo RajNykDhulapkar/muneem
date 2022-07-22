@@ -1,16 +1,12 @@
 import React, { useState } from "react";
+import ActiveLink from "../../components/ActiveLink";
 import DashboardLayout from "../../components/Layouts/DashboardLayout";
 import DashboardMain from "../../components/Mains/DashboardMain";
 
-const Dashboard = () => {
-    const [currentNavlinkIndex, setCurrentNavlinkIndex] = useState<number>(0);
-    const [topNavElem, setTopNavElem] = useState<number>(0);
+const BalanceSheet = () => {
+    const [topNavElem, setTopNavElem] = useState<number>(2);
     return (
-        <DashboardLayout
-            currentNavlinkIndex={currentNavlinkIndex}
-            setCurrentNavlinkIndex={setCurrentNavlinkIndex}
-            pageTitle="Dashboard"
-        >
+        <DashboardLayout pageTitle="Dashboard">
             <DashboardMain topNavElem={topNavElem} setTopNavElem={setTopNavElem}>
                 <div>
                     <div>
@@ -46,4 +42,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default BalanceSheet;

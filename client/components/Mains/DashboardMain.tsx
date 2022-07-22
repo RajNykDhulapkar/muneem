@@ -26,7 +26,7 @@ const DashboardMain: React.FC<DashboardMainProps> = ({ children, topNavElem, set
         <main className="ml-60 mr-60 pt-5 h-screen overflow-auto flex flex-col ">
             <nav className="relative">
                 <div
-                    className={`${topNavElemCSSClasses[topNavElem]} mt-1 h-8 rounded-md mx-8 bg-slate-800 transition-all`}
+                    className={`${topNavElemCSSClasses[topNavElem]} mt-1 h-8 rounded-md mx-8 bg-slate-800 transition-all delay-100`}
                 ></div>
                 <ul className="relative flex flex-row gap-7 px-10 mb-10 mt-2">
                     {navElements.map((elem, index) => (

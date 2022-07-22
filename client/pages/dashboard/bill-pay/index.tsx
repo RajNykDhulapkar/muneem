@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import DashboardMain from "../../components/Mains/DashboardMain";
 
-const Dashboard = () => {
-    const [currentNavlinkIndex, setCurrentNavlinkIndex] = useState<number>(0);
+import DashboardLayout from "../../../components/Layouts/DashboardLayout";
+import DashboardMain from "../../../components/Mains/DashboardMain";
+
+const BillPay = () => {
+    const [currentNavlinkIndex, setCurrentNavlinkIndex] = useState<number>(4);
     const [topNavElem, setTopNavElem] = useState<number>(0);
     return (
         <DashboardLayout
@@ -14,7 +15,7 @@ const Dashboard = () => {
             <DashboardMain topNavElem={topNavElem} setTopNavElem={setTopNavElem}>
                 <div>
                     <div>
-                        <div>Profit and Loss</div>
+                        <div>Bill Pay</div>
                         <div>Jun 2020 May 2021</div>
                     </div>
                     <div>
@@ -46,4 +47,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default BillPay;

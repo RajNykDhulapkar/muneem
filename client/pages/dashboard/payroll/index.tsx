@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import DashboardMain from "../../components/Mains/DashboardMain";
+import DashboardLayout from "../../../components/Layouts/DashboardLayout";
+import DashboardMain from "../../../components/Mains/DashboardMain";
 
 const Dashboard = () => {
-    const [currentNavlinkIndex, setCurrentNavlinkIndex] = useState<number>(0);
+    const [currentNavlinkIndex, setCurrentNavlinkIndex] = useState<number>(3);
     const [topNavElem, setTopNavElem] = useState<number>(0);
     return (
         <DashboardLayout

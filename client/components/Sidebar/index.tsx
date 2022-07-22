@@ -1,4 +1,3 @@
-import { NextComponentType } from "next";
 import Link from "next/link";
 import React, { useState } from "react";
 import navigationLinks from "./navigationLinks";
@@ -7,6 +6,14 @@ type SidebarProps = {
     currentNavlinkIndex: number;
     setCurrentNavlinkIndex: React.Dispatch<React.SetStateAction<number>>;
 };
+
+const sidebarSliderStyleOptions = [
+    "top-0",
+    "top-[2.5rem]",
+    "top-[5rem]",
+    "top-[7.5rem]",
+    "top-[10rem]",
+];
 
 const Sidebar: React.FC<SidebarProps> = ({ currentNavlinkIndex, setCurrentNavlinkIndex }) => {
     return (
@@ -36,21 +43,22 @@ const Sidebar: React.FC<SidebarProps> = ({ currentNavlinkIndex, setCurrentNavlin
             {/* navlinks */}
             <div className="relative flex-grow h-max min-w-full">
                 <div
-                    className={`absolute top-[${
-                        2.5 * currentNavlinkIndex
-                    }rem] min-w-full h-10 mt-4 rounded-md bg-slate-800 transition-all`}
+                    className={
+                        "absolute min-w-full h-10 mt-4 rounded-md bg-slate-800 transition-all " +
+                        sidebarSliderStyleOptions[currentNavlinkIndex]
+                    }
                 ></div>
                 <ul className="relative flex flex-col gap-4 py-6">
                     {navigationLinks.map((navLink, index: number) => (
-                        <Link href={"/dashboard"}>
+                        <Link href={navLink.link}>
                             <a key={index} onClick={() => setCurrentNavlinkIndex(index)}>
                                 <li
-                                    className={`flex flex-row items-end px-2 ${
-                                        index === currentNavlinkIndex ? "text-white" : ""
+                                    className={`flex  flex-row items-end px-2 transition-all delay-75 ${
+                                        index == currentNavlinkIndex ? "text-white" : ""
                                     }`}
                                 >
                                     {navLink.svgIcon(
-                                        index === currentNavlinkIndex ? "white" : "black",
+                                        index == currentNavlinkIndex ? "fill-white" : "fill-black",
                                     )}
 
                                     <p className="text-base pl-1">{navLink.name}</p>

@@ -4,7 +4,7 @@ export default [
         link: "/dashboard",
         svgIcon: (fillColor: string) => (
             <svg
-                className={`fill-${fillColor}`}
+                className={fillColor + " transition-all delay-75"}
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -18,7 +18,7 @@ export default [
         link: "/dashboard/todo",
         svgIcon: (fillColor: string) => (
             <svg
-                className={`fill-${fillColor}`}
+                className={fillColor + " transition-all delay-75"}
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -32,7 +32,7 @@ export default [
         link: "/dashboard/bookkeeping",
         svgIcon: (fillColor: string) => (
             <svg
-                className={`fill-${fillColor}`}
+                className={fillColor + " transition-all delay-75"}
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -46,7 +46,7 @@ export default [
         link: "/dashboard/payroll",
         svgIcon: (fillColor: string) => (
             <svg
-                className={`fill-${fillColor}`}
+                className={fillColor + " transition-all delay-75"}
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -60,7 +60,7 @@ export default [
         link: "/dashboard/bill-pay",
         svgIcon: (fillColor: string) => (
             <svg
-                className={`fill-${fillColor}`}
+                className={fillColor + " transition-all delay-75"}
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
