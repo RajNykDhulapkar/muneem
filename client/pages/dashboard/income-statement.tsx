@@ -4,9 +4,15 @@ import DashboardLayout from "../../components/Layouts/DashboardLayout";
 import DashboardMain from "../../components/Mains/DashboardMain";
 
 const IncomeStatement = () => {
+    const [currentNavlinkIndex, setCurrentNavlinkIndex] = useState<number>(0);
+
     const [topNavElem, setTopNavElem] = useState<number>(1);
     return (
-        <DashboardLayout pageTitle="Dashboard">
+        <DashboardLayout
+            currentNavlinkIndex={currentNavlinkIndex}
+            setCurrentNavlinkIndex={setCurrentNavlinkIndex}
+            pageTitle="Dashboard"
+        >
             <DashboardMain topNavElem={topNavElem} setTopNavElem={setTopNavElem}>
                 <div>
                     <div>
