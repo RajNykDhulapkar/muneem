@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "99deaf08-22c3-465c-adb9-037c21787fb4",
+    "colId": "history",
+    "containerId": "",
+    "name": "Server Health Check",
+    "url": "http://localhost:8080/healthCheck",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-02-04T18:17:20.525Z",
+    "modified": "2022-07-15T14:41:32.936Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

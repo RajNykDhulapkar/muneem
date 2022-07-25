@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "f1e85c92-df41-4c5b-8c35-2d96a76d669a",
+    "colName": "Auth API",
+    "created": "2022-02-04T18:21:53.102Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "3385666d-62ce-4f91-bc97-40e0f0ffac04",
+        "name": "User",
+        "containerId": "",
+        "created": "2022-02-04T18:21:53.102Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "2a6f690a-69f1-4ed2-9737-6b6768371c76",
+        "name": "Auth",
+        "containerId": "",
+        "created": "2022-02-04T18:21:53.102Z",
+        "sortNum": 20000
+      }
+    ]
+  },
+  {
+    "_id": "7e76de8b-0c1e-4e95-9748-4e09f6d33497",
+    "colName": "Resources Endpoints",
+    "created": "2022-02-08T05:48:47.717Z",
+    "sortNum": 20000,
+    "folders": [
+      {
+        "_id": "f743059a-9819-40ba-87b5-2d11c643798c",
+        "name": "categories",
+        "containerId": "",
+        "created": "2022-02-08T05:48:58.455Z",
+        "sortNum": 10000,
+        "settings": {
+          "headers": [],
+          "tests": []
+        }
+      },
+      {
+        "_id": "d97edb01-d942-4fd7-b4ba-fd4f5ff27535",
+        "name": "book-transactions",
+        "containerId": "",
+        "created": "2022-02-08T07:28:05.411Z",
+        "sortNum": 20000
+      }
+    ]
+  }
+]

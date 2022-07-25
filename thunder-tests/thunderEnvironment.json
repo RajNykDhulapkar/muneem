@@ -1,0 +1,51 @@
+[
+  {
+    "_id": "b8271d0b-f1b6-4dd7-ba28-9d4338aaa0e9",
+    "name": "Auth System",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2022-02-04T18:22:09.163Z",
+    "modified": "2022-07-25T16:41:39.146Z",
+    "data": [
+      {
+        "name": "email",
+        "value": "dhulapkarraj@gmail.com"
+      },
+      {
+        "name": "name",
+        "value": "Raj Naik Dhulapkar"
+      },
+      {
+        "name": "password",
+        "value": "BasicUserPassword@321"
+      },
+      {
+        "name": "newPassword",
+        "value": "ResetedBasicUserPassword"
+      },
+      {
+        "name": "accessToken",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIwLCJpYXQiOjE2NTg3NjcyOTksImV4cCI6MTY1ODg1MzY5OX0.nB9TmoCv2ieBji4mu_gWWqSTm1XEvxkPKI7i5qD9iuA"
+      }
+    ]
+  },
+  {
+    "_id": "88c67582-4f3c-40eb-8164-2f1aadb39880",
+    "name": "(Global Env)",
+    "default": false,
+    "global": true,
+    "sortNum": -1,
+    "created": "2022-07-10T11:48:28.661Z",
+    "modified": "2022-07-15T15:20:59.991Z",
+    "data": [
+      {
+        "name": "host",
+        "value": "http://localhost:8080"
+      },
+      {
+        "name": "accessToken",
+        "value": ""
+      }
+    ]
+  }
+]
