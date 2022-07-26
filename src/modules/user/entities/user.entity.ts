@@ -36,6 +36,9 @@ export class User {
     })
     email: string;
 
+    @Column({ default: false })
+    public isEmailConfirmed: boolean;
+
     @Column({
         nullable: true,
     })

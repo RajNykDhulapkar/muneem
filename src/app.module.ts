@@ -12,8 +12,10 @@ import validationSchema from "./config/validationSchema";
 import { AuthenticationModule } from "./authentication/authentication.module";
 import { APP_FILTER } from "@nestjs/core";
 import { ExceptionsLoggerFilter } from "./common/filters/exceptionsLogger.filter";
-import { BusinessModule } from './modules/business/business.module';
-import { TransactionModule } from './modules/transaction/transaction.module';
+import { BusinessModule } from "./modules/business/business.module";
+import { TransactionModule } from "./modules/transaction/transaction.module";
+import { EmailModule } from "./email/email.module";
+import { EmailConfirmationModule } from "./emailConfirmation/emailConfirmation.module";
 
 console.log(`.env.${process.env.NODE_ENV}`);
 
@@ -21,8 +23,8 @@ console.log(`.env.${process.env.NODE_ENV}`);
     imports: [
         ConfigModule.forRoot({
             envFilePath: [`.env.${process.env.NODE_ENV}`],
-            validationSchema,
             load: [configuration],
+            validationSchema,
             isGlobal: true,
         }),
         DatabaseModule,
@@ -31,6 +33,8 @@ console.log(`.env.${process.env.NODE_ENV}`);
         AuthenticationModule,
         BusinessModule,
         TransactionModule,
+        EmailModule,
+        EmailConfirmationModule,
     ],
     controllers: [AppController],
     providers: [
