@@ -3,13 +3,12 @@ import DashboardLayout from "../../components/Layouts/DashboardLayout";
 import DashboardMain from "../../components/Mains/DashboardMain";
 
 const Dashboard = () => {
-    const [topNavElem, setTopNavElem] = useState<number>(0);
     return (
         <DashboardLayout pageTitle="Dashboard">
-            <DashboardMain topNavElem={topNavElem} setTopNavElem={setTopNavElem}>
+            <DashboardMain>
                 <div>
                     <div>
-                        <div>Profit and Loss</div>
+                        <div>Summary</div>
                         <div>Jun 2020 May 2021</div>
                     </div>
                     <div>

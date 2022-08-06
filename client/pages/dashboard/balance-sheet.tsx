@@ -15,7 +15,7 @@ const BalanceSheet = () => {
             <DashboardMain topNavElem={topNavElem} setTopNavElem={setTopNavElem}>
                 <div>
                     <div>
-                        <div>Profit and Loss</div>
+                        <div>Balance Sheet</div>
                         <div>Jun 2020 May 2021</div>
                     </div>
                     <div>

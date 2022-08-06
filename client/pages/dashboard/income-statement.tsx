@@ -16,7 +16,7 @@ const IncomeStatement = () => {
             <DashboardMain topNavElem={topNavElem} setTopNavElem={setTopNavElem}>
                 <div>
                     <div>
-                        <div>Profit and Loss</div>
+                        <div>Income Statement</div>
                         <div>Jun 2020 May 2021</div>
                     </div>
                     <div>

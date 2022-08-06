@@ -16,7 +16,7 @@ const CashAnalysis = () => {
             <DashboardMain topNavElem={topNavElem} setTopNavElem={setTopNavElem}>
                 <div>
                     <div>
-                        <div>Profit and Loss</div>
+                        <div>Cash Analysis</div>
                         <div>Jun 2020 May 2021</div>
                     </div>
                     <div>
