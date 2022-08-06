@@ -47,6 +47,7 @@ export class AuthenticationService {
             }
             return user;
         } catch (error: any) {
+            if (error instanceof HttpException) throw error;
             // TODO test this feature
             throw new HttpException(
                 this.configService.get("internalServerErrorMessage"),

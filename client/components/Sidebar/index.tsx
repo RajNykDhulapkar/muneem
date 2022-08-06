@@ -1,14 +1,15 @@
 import Link from "next/link";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../store/hooks";
-import { selectSideBarNavlinkCurrentIndex } from "../../store/style/navigationSlice";
+import React, { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import navigationLinks from "./navigationLinks";
-import { changeSideBarNavlinkIndex } from "../../store/style/navigationSlice";
-type SidebarProps = {
-    currentNavlinkIndex: number;
-    setCurrentNavlinkIndex: React.Dispatch<React.SetStateAction<number>>;
-};
+import {
+    changeSideBarNavlinkIndex,
+    selectSideBarNavlinkCurrentIndex,
+    selectSideBarNavlinkPreviousIndex,
+} from "../../store/navigationSlice";
+import { RootState } from "../../store/store";
+import { useRouter } from "next/router";
+type SidebarProps = {};
 
 const sidebarSliderStyleOptions = [
     "top-0",
@@ -18,12 +19,26 @@ const sidebarSliderStyleOptions = [
     "top-[10rem]",
 ];
 
-const Sidebar: React.FC<SidebarProps> = ({ currentNavlinkIndex, setCurrentNavlinkIndex }) => {
-    const { currentIndex } = useAppSelector(selectSideBarNavlinkCurrentIndex);
-    const dispatch = useDispatch();
+const Sidebar: React.FC<SidebarProps> = () => {
+    const previous = useAppSelector(selectSideBarNavlinkPreviousIndex);
+    const _currentIndex = useAppSelector(selectSideBarNavlinkCurrentIndex);
+    const [currentIndex, setCurrentIndex] = useState(previous);
+    const dispatch = useAppDispatch();
+    const router = useRouter();
     const changeIndex = (newIndex: number) => {
         dispatch(changeSideBarNavlinkIndex(newIndex));
     };
+    useEffect(() => {
+        if (
+            router.pathname !== navigationLinks[_currentIndex].link &&
+            !navigationLinks[_currentIndex].subLinks?.includes(router.pathname)
+        )
+            router.push("/dashboard");
+        const timer = setTimeout(() => {
+            setCurrentIndex(_currentIndex);
+        }, 40);
+        return () => clearTimeout(timer);
+    }, []);
     return (
         <div className="fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-60 p-4 flex flex-col items-start gap-2 divide-y-2 divide-slate-800 divide-opacity-50">
             {/* logo */}

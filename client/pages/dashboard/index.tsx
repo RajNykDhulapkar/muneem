@@ -3,14 +3,9 @@ import DashboardLayout from "../../components/Layouts/DashboardLayout";
 import DashboardMain from "../../components/Mains/DashboardMain";
 
 const Dashboard = () => {
-    const [currentNavlinkIndex, setCurrentNavlinkIndex] = useState<number>(0);
     const [topNavElem, setTopNavElem] = useState<number>(0);
     return (
-        <DashboardLayout
-            currentNavlinkIndex={currentNavlinkIndex}
-            setCurrentNavlinkIndex={setCurrentNavlinkIndex}
-            pageTitle="Dashboard"
-        >
+        <DashboardLayout pageTitle="Dashboard">
             <DashboardMain topNavElem={topNavElem} setTopNavElem={setTopNavElem}>
                 <div>
                     <div>

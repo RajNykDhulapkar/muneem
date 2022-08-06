@@ -3,10 +3,11 @@ import { Exclude } from "class-transformer";
 import Business from "src/modules/business/entities/business.entity";
 
 export enum UserRole {
-    USER = "USER",
-    SUPERUSER = "SUPERUSER",
-    DELETED = "DELETED",
-    GHOST = "GHOST", // TODO this property will be enabled when the user is created and will be changed to USER once the email of the user has been verified
+    SUPERUSER = 0,
+    USER = 1,
+    ADMIN = 2,
+    GHOST = 3, // TODO this property will be enabled when the user is created and will be changed to USER once the email of the user has been verified
+    DELETED = 4, // TODO soft delete user
 }
 
 @Entity({

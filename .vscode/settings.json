@@ -3,7 +3,9 @@
         "CAMELCASE",
         "middlewares",
         "muneem",
+        "Navlink",
         "nestjs",
+        "reduxjs",
         "SNAKECASE",
         "TITLECASE",
         "typeorm"

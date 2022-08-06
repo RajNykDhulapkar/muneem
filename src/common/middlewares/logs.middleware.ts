@@ -6,6 +6,8 @@ import User from "../../modules/user/entities/user.entity";
 export class LoggerMiddleware implements NestMiddleware {
     private readonly logger = new Logger("HTTP");
     use(req: Request, res: Response, next: NextFunction) {
+        // log the request body // for debugging only
+        this.logger.log(req.body); // TODO remove
         res.on("finish", () => {
             const { method, originalUrl } = req;
             const { statusCode, statusMessage } = res;
